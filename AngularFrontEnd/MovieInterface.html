@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html ng-app="MainModule">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dynatable/0.3.1/jquery.dynatable.css">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="Controllers/MovieController.js"></script>
+
+<title>DS-Online-Film-Tickets</title>
+</head>
+<body ng-controller="MainController">
+<div class="container">
+
+    <div class="page-header">
+        <h2 class="text-info">DS-Online-Film-Tickets</h2>
+    </div>
+    <div class="well well-lg" style="background-image: url(Pictures/banner4.jpg);background-repeat: no-repeat; background-size: cover;color: white">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+
+
+                    <div class="col-md-12">
+                        <h3><strong>Movie Selection</strong></h3>
+                    </div>
+
+
+
+                    <div class="col-md-12">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Select Film Hall *</label>
+                                <select class="form-control" ng-model="Film.hallName" id="hallName">
+                                    <option ng-repeat="film in filmData">
+                                        {{film.filmHall}}
+                                    </option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Select Film * </label>
+                                <select class="form-control" ng-model="Film.Name" id="filmName">
+                                    <option ng-repeat="film in filmData">
+                                        {{film.Name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div>
+                                    <label>Select Show Time *</label>
+                                    <select class="form-control" ng-model="Film.showTime" id="showTime" >
+                                        <option value="1">10:30AM</option>
+                                        <option value="2">13:30PM</option>
+                                        <option value="3">16:30PM</option>
+                                        <option value="4">19:30PM</option>
+                                        <option value="5">22:30PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Select Date *        </label><br>
+                                    <input type="date" id="filmDate" class="form-control" ng-model="Film.filmDate">
+                                </div>
+
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3">
+                    <div class="form-group pull-center">
+                        <button class="btn btn-success" id="next" ng-click="GotoNext()" data-toggle="modal" data-target="#myModal">Next</button>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title" style="color: black">Seat Booking</h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <label>Select Category</label>
+                                            <select class="form-control" ng-model="Film.seatType" id="seatType" >
+                                                <option value="">Select Category</option>
+                                                <option value="ODC">ODC</option>
+                                                <option value="BALCONY">BALCONY</option>
+                                                <option value="BOX">BOX</option>
+                                            </select>
+                                            </br>
+                                            <label>Select Number Of Full tickets</label>
+                                            <select class="form-control" ng-model="Film.fullSeats" id="full" >
+                                                <option value="">Select Full tickets</option>
+                                                <option value=1>1</option>
+                                                <option value=2>2</option>
+                                            </select>
+                                            </br>
+                                            <label>Select Number Of Half tickets</label>
+                                            <select class="form-control" ng-model="Film.halfSeats" id="half" >
+                                                <option value="">Select Half tickets</option>
+                                                <option value=1>1</option>
+                                                <option value=2>2</option>
+                                            </select>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" ng-click="recordData(Film)"  >Next</button>
+                                            <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        </div>
+                </div>
+                    </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    <div class="page-header">
+        <h3><strong>Ticket Rates</strong></h3>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="data-table">
+
+                    <tr>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Price</th>
+
+                    </tr>
+
+
+                    <tr ng-repeat="rate in rates ">
+                        <td>{{rate.Category}}</td>
+                        <td>{{rate.Type}}</td>
+                        <td>{{rate.Price}}</td>
+
+                    </tr>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+
+
+
+</html>

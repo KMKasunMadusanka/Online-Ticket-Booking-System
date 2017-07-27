@@ -1,0 +1,12 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="paymentManagementService" context="/payments">
+   <resource methods="POST" uri-template="/doPayment">
+      <inSequence>
+         <send>
+            <endpoint>
+               <http method="POST" uri-template="http://192.168.8.101:9763/paymentManagementService_1.0.0/services/payment_management_service/payments/doPayment"/>
+            </endpoint>
+         </send>
+      </inSequence>
+   </resource>
+</api>
+                        

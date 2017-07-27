@@ -1,0 +1,12 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="snackManagementService" context="/sancks">
+   <resource methods="GET" uri-template="/get">
+      <inSequence>
+         <send>
+            <endpoint>
+               <http method="GET" uri-template="http://192.168.8.101:9763/snackManagementService_1.0.0/services/snack_management_service/sancks/get"/>
+            </endpoint>
+         </send>
+      </inSequence>
+   </resource>
+</api>
+                        

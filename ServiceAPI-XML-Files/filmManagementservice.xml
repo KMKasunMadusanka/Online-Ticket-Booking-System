@@ -1,0 +1,12 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="filmManagementservice" context="/films">
+   <resource methods="GET" uri-template="/get">
+      <inSequence>
+         <send>
+            <endpoint>
+               <http method="GET" uri-template="http://192.168.8.101:9763/filmManagementservice_1.0.0/services/film_management_service/films/get"/>
+            </endpoint>
+         </send>
+      </inSequence>
+   </resource>
+</api>
+                        

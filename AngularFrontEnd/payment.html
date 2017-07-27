@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="payment">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dynatable/0.3.1/jquery.dynatable.css">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+<script src="Controllers/paymentController.js"></script>
+
+<title>Payment Management</title>
+</head>
+
+<body ng-controller="paymentController">
+<div class="container">
+
+    <div class="page-header">
+        <h2 class="text-info">Payment Management</h2>
+    </div>
+    <div>
+        <div class="container-fluid">
+            <div class="page-header">
+                <h3 class="text-info">Card Payment</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Card No</label>
+                            <input type="number" class="form-control" ng-model="payment.card" id="no">
+                            <label>(16 digits )</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-10"></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Card Verification Value(CVV)</label>
+                            <input class="form-control" ng-model="payment.cvv" id="cvv">
+                            <label>(3 digits )</label>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="container-fluid">
+            <div class="page-header">
+                <h3 class="text-info">Mobile Payment</h3>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="number" class="form-control" ng-model="payment.phone" id="PhoneNo">
+                    <label>(10 digits )</label>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-10"></div>
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group col-md-6 ">
+
+                        <button class="btn btn-success" id="pay" ng-click="doPayment(payment)" >Pay</button>
+                        <button class="btn btn-warning" id="clear" ng-click="clearData()" >Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</body>
+
+
+
+
+</html>

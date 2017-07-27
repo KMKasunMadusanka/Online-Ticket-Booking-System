@@ -1,0 +1,12 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="userManagementService" context="/users">
+   <resource methods="POST" uri-template="/post">
+      <inSequence>
+         <send>
+            <endpoint>
+               <http method="POST" uri-template="http://192.168.8.101:9763/userManagementService_1.0.0/services/user_management_service/users/post"/>
+            </endpoint>
+         </send>
+      </inSequence>
+   </resource>
+</api>
+                        
